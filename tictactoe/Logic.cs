@@ -74,7 +74,6 @@ namespace tictactoe
                     }
                 }
             }
-            //TBD
         }
         public void BoardClick(int row, int col)
         {
