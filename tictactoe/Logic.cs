@@ -6,7 +6,47 @@ using System.Threading.Tasks;
 
 namespace tictactoe
 {
-    class Logic
+    public class Logic
     {
+        private Random random;
+
+        public Logic()
+        {
+            board = new char[3, 3];
+            random = new(new DateTime().Millisecond);
+        }
+        private char[,] board;
+        public char[,] Board { get; }
+        public bool CheckWin(char symbol)
+        {
+            if ((board[0, 0] == symbol && board[0, 1] == symbol && board[0, 2] == symbol) ||
+                (board[1, 0] == symbol && board[1, 1] == symbol && board[1, 2] == symbol) ||
+                (board[2, 0] == symbol && board[2, 1] == symbol && board[2, 2] == symbol) ||
+                (board[0, 0] == symbol && board[1, 0] == symbol && board[2, 0] == symbol) ||
+                (board[0, 1] == symbol && board[1, 1] == symbol && board[2, 1] == symbol) ||
+                (board[0, 2] == symbol && board[1, 2] == symbol && board[2, 2] == symbol) ||
+                (board[0, 0] == symbol && board[1, 1] == symbol && board[2, 2] == symbol) ||
+                (board[0, 2] == symbol && board[1, 1] == symbol && board[2, 0] == symbol))
+                return true;
+            else return false;
+        }
+
+        public void PlayerPlace(int row, int column)
+        {
+            board[row, column] = 'x';
+        }
+
+        public void AiPlace()
+        {
+            string boardEmpty = "";
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    if (board[i, j] != 'x' && board[i, j] != 'o')
+                        boardEmpty += ' ';
+                }
+            }
+        }
     }
 }
