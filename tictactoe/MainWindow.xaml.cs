@@ -23,6 +23,19 @@ namespace tictactoe
         public MainWindow()
         {
             InitializeComponent();
+            Logic logic = new Logic();
+            renderer.SetupLogic(logic);
+        }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            renderer.ReSize(new Size(grid.ActualWidth, grid.ActualHeight));
+            renderer.InvalidateVisual();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            renderer.InvalidateVisual();
         }
     }
 }

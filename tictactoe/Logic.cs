@@ -19,7 +19,7 @@ namespace tictactoe
             GameIsOver = false;
         }
         private char[,] board;
-        public char[,] Board { get; private set; }
+        public char[,] Board { get { return board; } private set { board = value; } }
         private bool CheckWin(char symbol)
         {
             if ((board[0, 0] == symbol && board[0, 1] == symbol && board[0, 2] == symbol) ||
