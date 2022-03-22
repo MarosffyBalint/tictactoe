@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace tictactoe
 {
-    public class Logic
+    public class Logic : ILogic
     {
         private Random random;
+        public bool GameIsOver { get; }
 
         public Logic()
         {
@@ -17,7 +18,7 @@ namespace tictactoe
         }
         private char[,] board;
         public char[,] Board { get; }
-        public bool CheckWin(char symbol)
+        private bool CheckWin(char symbol)
         {
             if ((board[0, 0] == symbol && board[0, 1] == symbol && board[0, 2] == symbol) ||
                 (board[1, 0] == symbol && board[1, 1] == symbol && board[1, 2] == symbol) ||
@@ -31,12 +32,12 @@ namespace tictactoe
             else return false;
         }
 
-        public void PlayerPlace(int row, int column)
+        private void PlayerPlace(int row, int column)
         {
             board[row, column] = 'x';
         }
 
-        public void AiPlace()
+        private void AiPlace()
         {
             string boardEmpty = "";
             for (int i = 0; i < 3; i++)
@@ -47,6 +48,10 @@ namespace tictactoe
                         boardEmpty += ' ';
                 }
             }
+        }
+        public void BoardClick(int row, int col)
+        {
+
         }
     }
 }
