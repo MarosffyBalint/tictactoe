@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace tictactoe
 {
@@ -39,10 +40,10 @@ namespace tictactoe
                         switch (logic.Board[i,j])
                         {
                             case 'o':
-                                drawingContext.DrawRectangle(Brushes.Blue, new Pen(Brushes.Black, 10), new Rect(i * rectWidth, j * rectHeight, rectWidth, rectHeight));
+                                drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri("o.PNG", UriKind.RelativeOrAbsolute))), new Pen(Brushes.Black, 10), new Rect(i * rectWidth, j * rectHeight, rectWidth, rectHeight));
                                 break;
                             case 'x':
-                                drawingContext.DrawRectangle(Brushes.Red, new Pen(Brushes.Black, 10), new Rect(i * rectWidth, j * rectHeight, rectWidth, rectHeight));
+                                drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri("x.PNG", UriKind.RelativeOrAbsolute))), new Pen(Brushes.Black, 10), new Rect(i * rectWidth, j * rectHeight, rectWidth, rectHeight));
 
                                 break;
                             default:
