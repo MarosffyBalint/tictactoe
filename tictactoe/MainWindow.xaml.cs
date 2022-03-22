@@ -37,5 +37,40 @@ namespace tictactoe
         {
             renderer.InvalidateVisual();
         }
+
+        private void grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Point mouse = e.GetPosition(grid);
+            int x = (int)((mouse.X));
+            int y = (int)((mouse.Y));
+
+            renderer.InvalidateVisual();
+            if (x < grid.ActualWidth / 3)
+            {
+                x = 0;
+            }
+            else if (x < grid.ActualWidth / 3 * 2 && x >= grid.ActualWidth / 3)
+            {
+                x = 1;
+            }
+            else
+            {
+                x = 2;
+            }
+            if (y < grid.ActualHeight / 3)
+            {
+                y = 0;
+            }
+            else if (y < grid.ActualHeight / 3 * 2 && y >= grid.ActualHeight / 3)
+            {
+                y = 1;
+            }
+            else
+            {
+                y = 2;
+            }
+            renderer.logic.BoardClick(x,y);
+
+        }
     }
 }

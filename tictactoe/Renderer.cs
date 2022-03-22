@@ -11,7 +11,7 @@ namespace tictactoe
     class Renderer : FrameworkElement
     {
 
-        ILogic logic;
+        public ILogic logic;
         Size size;
 
         public void SetupLogic(ILogic logic)
